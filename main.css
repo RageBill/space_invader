@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  background-color: black;
+  display: block;
+}
+
+#retry {
+  margin-top: 20px;
+  display: none;
+}
