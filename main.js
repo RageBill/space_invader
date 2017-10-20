@@ -276,15 +276,14 @@ $(document).ready(function(){
   $(window).on("keydown", function(event){
     let key = event.which;
 
-    // If the space key is pressed, add a bullet to the bullets array (fires a bullet)
-    if(key == 32){
-      bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#FFFFFF"))
-      return;
-    }
-
     // If the key pressed is not there already
     if(keyPressed.indexOf(key) == -1){
       keyPressed.push(key);
+
+      // If the space key is pressed, add a bullet to the bullets array (fires a bullet)
+      if(key == 32){
+        bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#FFFFFF"))
+      }
     }
   });
 
