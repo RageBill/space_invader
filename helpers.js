@@ -147,7 +147,7 @@ class City {
 
   alive(){
     let alive = false;
-    for(let i = 0; i < this.cavnas.width; i++){
+    for(let i = 0; i < this.canvas.width; i++){
       for(let j = 0; j < this.canvas.height; j++){
         let data = this.ctx.getImageData(i, j, 1, 1);
         alive = (data.data[3] != 0)? true : false;
