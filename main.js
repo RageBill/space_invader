@@ -160,7 +160,6 @@ $(document).ready(function(){
         if(cities.gotHit(bullet.x, bullet.y + bullet.height)){
           bullets.splice(i, 1); // Remove the current bullet from array
           i--; // Redo current index since the array is shifted and current slot is replaced by next bullet
-          gameOver = cities.alive();
           continue;
         }
       }
@@ -216,13 +215,21 @@ $(document).ready(function(){
       }
 
       // If aliens reach the edge of screen, switch their direction and move forward for one row
+      let bottomMost = 0;
       if(rightMost > screen.width - 30 || leftMost < 30){
         alien_direction *= -1; // Switch alien's movement direction
         for(let j = 0; j < aliens.length; j++){
           let alien = aliens[j];
           alien.x += 30 * alien_direction; // Move back so it doesn't go to the edge of screen
           alien.y += 30; // Move forward
+
+          bottomMost = Math.max(bottomMost, alien.y + alien.height);
         }
+      }
+
+      // If the aliens reaches the cities, game over!
+      if(bottomMost > tank.y - 60){
+        gameOver = true;
       }
     }
   }
