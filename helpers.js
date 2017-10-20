@@ -18,12 +18,16 @@ function Colliding(a, b){
 }
 
 // Game Over Function
-function GameOver(screen){
+function GameOver(screen, win){
   screen.clear(); // Clear the screen
   screen.ctx.font = "64px serif"; // Size of 
   screen.ctx.fillStyle = "white";
   screen.ctx.textAlign = "center";
-  screen.ctx.fillText("Game Over", screen.width / 2, screen.height / 2);
+  if(win){
+    screen.ctx.fillText("You Win!!", screen.width / 2, screen.height / 2);
+  } else {
+    screen.ctx.fillText("Game Over", screen.width / 2, screen.height / 2);
+  }
   document.getElementById("retry").style.display = "flex";
 }
 

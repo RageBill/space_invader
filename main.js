@@ -7,7 +7,7 @@ $(document).ready(function(){
   */
 
   // Variable for overall set up
-  var screen, invaders_image, gameOver = true;
+  var screen, invaders_image, gameOver = false, win = false;
 
   // Variables for frames to control screen's updates
   var frames, levelFrame, motion;
@@ -37,7 +37,7 @@ $(document).ready(function(){
       if(!gameOver){
         window.requestAnimationFrame(loop, screen.canvas);
       } else {
-        GameOver(screen);
+        GameOver(screen, win);
       }
     }
     window.requestAnimationFrame(loop, screen.canvas);
@@ -59,6 +59,7 @@ $(document).ready(function(){
       screen = new Screen(504, 600);
     }
     gameOver = false;
+    win = false;
 
     // Calculating screen's update using variables for frames
     frames = 0; // The normal frame of the screen - calculated per update
@@ -180,6 +181,7 @@ $(document).ready(function(){
             case 10: levelFrame = 20; break; // 3 times faster than normal (60)
             case 5: levelFrame = 15; break; // 4 times faster than normal (60)
             case 1: levelFrame = 6; break; // 10 times faster than normal (60)
+            case 0: gameOver = true; win = true; break; // Game Over and player wins!
           }
         }
       }
